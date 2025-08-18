@@ -6,13 +6,13 @@ public class Student {
 	 
 	 //default constructor
 	 public Student() {
-		 this(16,"Magesh");
+		 this(16,"Magesh");//calling parametrized constructor 
 		 System.out.println("Constructor Called..");
 	 }
 	 
 	 //parametrized constructor 
 	 public Student(int sid, String sname) {
-		 //this();
+		 //this(); //calling default constructor
 		 this.sid=sid;
 		 this.name=name;
 	 }
