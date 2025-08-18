@@ -7,7 +7,7 @@ public class IfElseDemo {
 		if(age>=18)
 			System.out.println(" You are eligible for Voting");	
 		else
-			System.out.println("Sorry!, wait ");
+			System.out.println("Sorry!, wait z");
 
 		System.out.println("if else demonstration");
 		
