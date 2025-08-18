@@ -23,7 +23,7 @@ public class BufferedReaderDemo {
 		double Sal=Double.parseDouble(br.readLine());
 		
 		System.out.println("Name: "+name);
-		System.out.println("Name: "+age);
-		System.out.println("Name: "+Sal);
+		System.out.println("age: "+age);
+		System.out.println("Salary: "+Sal);
 	}
 }
