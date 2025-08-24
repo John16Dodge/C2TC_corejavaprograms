@@ -1,9 +1,8 @@
 package dayEighteen.map;
 
-//Program to demonstrate LinkedHashMap
-package com.tnsif.dayeighteen.map;
 
 
+import java.util.LinkedHashMap;
 
 public class LinkedHashMapDemo {
 
