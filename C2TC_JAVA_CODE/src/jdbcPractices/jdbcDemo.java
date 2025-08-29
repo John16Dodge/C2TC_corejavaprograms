@@ -1,13 +1,13 @@
 package jdbcPractices;
 
-import java.sql.*;
+import java.sql.*;  // ✅ Correct import
 
 public class jdbcDemo {
     public static void main(String[] args) {
         // Credentials
         String url = "jdbc:postgresql://localhost:5432/employee";
         String user = "postgres";
-        String password= "m16j28t34";
+        String password = "m16j28t34";
 
         // JDBC Variables
         Connection conn = null;
@@ -24,22 +24,23 @@ public class jdbcDemo {
 
             // Example: create statement
             stmt = conn.createStatement();
-            
-            String query= "SELECT * FROM employee";
-            
-            rs = stmt.executeQuery("SELECT version();");
 
-           System.out.println("Emp Deatis: ");
-           while (rs.next()) {
-        	   int id =rs.getInt("eid");
-        	   String Name= rs.getString("ename");
-        	   String Name= rs.getString("city");
-           }
+            String query = "SELECT * FROM employee";  // ✅ Correct query
+            rs = stmt.executeQuery(query);
+
+            System.out.println("📋 Employee Details: ");
+            while (rs.next()) {
+                int id = rs.getInt("eid");
+                String name = rs.getString("ename");
+                String city = rs.getString("city");
+
+                System.out.println("ID: " + id + ", Name: " + name + ", City: " + city);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-        	//Close Resources
+            // Close Resources
             try { if (rs != null) rs.close(); } catch (Exception e) {}
             try { if (stmt != null) stmt.close(); } catch (Exception e) {}
             try { if (conn != null) conn.close(); } catch (Exception e) {}
