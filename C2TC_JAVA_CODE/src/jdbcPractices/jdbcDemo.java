@@ -31,12 +31,16 @@ public class jdbcDemo {
 
             // Execute Query
             String query = "SELECT * FROM emp";
-            rs = stmt.executeQuery(query);
+            rs = stmt.executeQuery(query); //Used for executing Select based commands used
+            								//stmt.executeUpdate Used fpr Non Select based commands
 
             // Process the result set
+            
             System.out.println("Employee Details:");
             System.out.println("-------------------------------------------");
+            
             while (rs.next()) {
+            		
                 int eid = rs.getInt("eid");
                 String ename = rs.getString("ename");
                 String city = rs.getString("city");
