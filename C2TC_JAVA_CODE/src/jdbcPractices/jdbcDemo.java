@@ -22,7 +22,12 @@ public class jdbcDemo {
             conn = DriverManager.getConnection(url, user, password);
 
             // Create Statement
-            stmt = conn.createStatement();
+            stmt = conn.createStatement(); /*
+									         Types : 
+									         1.Statement
+									         2.Prepared Statement
+									         3.Callable Statement
+									        */
 
             // Execute Query
             String query = "SELECT * FROM emp";
