@@ -1,49 +1,54 @@
 package jdbcPractices;
 
-import java.sql.*;  // ✅ Correct import
+import java.sql.*;
 
 public class jdbcDemo {
     public static void main(String[] args) {
-        // Credentials
-        String url = "jdbc:postgresql://localhost:5432/employee";
-        String user = "postgres";
-        String password = "m16j28t34";
+        // Database credentials
+        String url = "jdbc:postgresql://localhost:6543/employee"; // DB name = employee
+        String user = "postgres"; // PostgreSQL username
+        String password = "m16j28t34"; // PostgreSQL password
 
-        // JDBC Variables
+        // JDBC variables
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
 
         try {
-            // Load PostgreSQL driver
+            // Load PostgreSQL JDBC Driver
             Class.forName("org.postgresql.Driver");
 
-            // Connect to database
+            // Establish Connection
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("✅ Connected to PostgreSQL database!");
 
-            // Example: create statement
+            // Create Statement
             stmt = conn.createStatement();
 
-            String query = "SELECT * FROM employee";  // ✅ Correct query
+            // Execute Query
+            String query = "SELECT * FROM emp";
             rs = stmt.executeQuery(query);
 
-            System.out.println("📋 Employee Details: ");
+            // Process the result set
+            System.out.println("Employee Details:");
+            System.out.println("-------------------------------------------");
             while (rs.next()) {
-                int id = rs.getInt("eid");
-                String name = rs.getString("ename");
+                int eid = rs.getInt("eid");
+                String ename = rs.getString("ename");
                 String city = rs.getString("city");
 
-                System.out.println("ID: " + id + ", Name: " + name + ", City: " + city);
+                System.out.println("ID: " + eid + ", Name: " + ename + ", City: " + city);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // Close Resources
-            try { if (rs != null) rs.close(); } catch (Exception e) {}
-            try { if (stmt != null) stmt.close(); } catch (Exception e) {}
-            try { if (conn != null) conn.close(); } catch (Exception e) {}
+            // Close resources
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
